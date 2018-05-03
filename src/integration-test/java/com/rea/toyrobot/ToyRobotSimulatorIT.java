@@ -5,6 +5,7 @@ import com.rea.toyrobot.input.InputHandler;
 import com.rea.toyrobot.input.InputHandlers;
 import com.rea.toyrobot.robot.ToyRobot;
 import com.rea.toyrobot.robot.ToyRobots;
+import com.rea.toyrobot.simulator.ToyRobotSimulator;
 import com.rea.toyrobot.tabletop.TableTop;
 import com.rea.toyrobot.tabletop.TableTops;
 import org.junit.Before;

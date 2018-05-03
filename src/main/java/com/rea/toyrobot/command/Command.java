@@ -1,4 +1,8 @@
 package com.rea.toyrobot.command;
 
-public enum Command {
+/**
+ * Interface which should be implemented by Concrete Robot Commands
+ */
+public interface Command {
+    void perform();
 }

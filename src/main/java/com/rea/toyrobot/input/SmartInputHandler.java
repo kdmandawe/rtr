@@ -13,9 +13,14 @@ import java.util.Optional;
 public class SmartInputHandler implements InputHandler {
 
     @Override
-    public Optional<List<Command>> getCommands(String[] inputArgs, ToyRobot robot) {
-        List<Command> commands = null;
-
-        return Optional.ofNullable(commands);
+    public Optional<List<Command>> getCommands(String[] inputArgs, ToyRobot toyRobot) {
+        Optional<List<Command>> commands = Optional.empty();
+        if(inputArgs != null && inputArgs.length  == 1) {
+            InputHandler handler = new FileInputHandler();
+            commands = handler.getCommands(inputArgs, toyRobot);
+        } else {
+            //TODO stdIn
+        }
+        return commands;
     }
 }

@@ -26,7 +26,7 @@ public final class ToyRobotSimulator {
         this.tableTop = tableTop;
     }
 
-    public void runSimulator(String[] args) {
+    public void play(String[] args) {
         Optional<List<Command>> commandList = inputHandler.getCommands(args, this.toyRobot);
     }
 

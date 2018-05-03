@@ -1,11 +1,11 @@
-package com.rea.toyrobot;
+package com.rea.toyrobot.simulator;
 
+import com.rea.toyrobot.IntegrationTest;
 import com.rea.toyrobot.common.util.PropertyProviders;
 import com.rea.toyrobot.input.InputHandler;
 import com.rea.toyrobot.input.InputHandlers;
 import com.rea.toyrobot.robot.ToyRobot;
 import com.rea.toyrobot.robot.ToyRobots;
-import com.rea.toyrobot.simulator.ToyRobotSimulator;
 import com.rea.toyrobot.tabletop.TableTop;
 import com.rea.toyrobot.tabletop.TableTops;
 import org.junit.Before;
@@ -32,7 +32,7 @@ public class ToyRobotSimulatorIT {
     public void testMoveOneUp() {
         String path = getClass().getClassLoader().getResource("input_it_001.txt").getPath();
         String[] args = {path};
-        simulator.runSimulator(args);
+        simulator.play(args);
         assertEquals("0,1,NORTH", simulator.getReportString());
     }
 
@@ -40,7 +40,7 @@ public class ToyRobotSimulatorIT {
     public void testFaceLeft() {
         String path = getClass().getClassLoader().getResource("input_it_002.txt").getPath();
         String[] args = {path};
-        simulator.runSimulator(args);
+        simulator.play(args);
         assertEquals("0,0,WEST", simulator.getReportString());
     }
 
@@ -48,7 +48,7 @@ public class ToyRobotSimulatorIT {
     public void testSeriesOfValidMoves() {
         String path = getClass().getClassLoader().getResource("input_it_003.txt").getPath();
         String[] args = {path};
-        simulator.runSimulator(args);
+        simulator.play(args);
         assertEquals("3,3,NORTH", simulator.getReportString());
     }
 

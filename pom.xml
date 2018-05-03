@@ -45,7 +45,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.rea.toyrobot.simulator.ToyRobotSimulator</mainClass>
+                            <mainClass>com.rea.toyrobot.ToyRobotPlayer</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

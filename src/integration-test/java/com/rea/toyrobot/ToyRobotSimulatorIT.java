@@ -10,9 +10,11 @@ import com.rea.toyrobot.tabletop.TableTop;
 import com.rea.toyrobot.tabletop.TableTops;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import static org.junit.Assert.assertEquals;
 
+@Category(IntegrationTest.class)
 public class ToyRobotSimulatorIT {
 
     ToyRobotSimulator simulator;

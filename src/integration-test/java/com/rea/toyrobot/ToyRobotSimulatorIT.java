@@ -27,7 +27,7 @@ public class ToyRobotSimulatorIT {
 
     @Test
     public void testMoveOneUp() {
-        String path = getClass().getClassLoader().getResource("input_001.txt").getPath();
+        String path = getClass().getClassLoader().getResource("input_it_001.txt").getPath();
         String[] args = {path};
         simulator.runSimulator(args);
         assertEquals("0,1,NORTH", simulator.getReportString());
@@ -35,7 +35,7 @@ public class ToyRobotSimulatorIT {
 
     @Test
     public void testFaceLeft() {
-        String path = getClass().getClassLoader().getResource("input_002.txt").getPath();
+        String path = getClass().getClassLoader().getResource("input_it_002.txt").getPath();
         String[] args = {path};
         simulator.runSimulator(args);
         assertEquals("0,0,WEST", simulator.getReportString());
@@ -43,7 +43,7 @@ public class ToyRobotSimulatorIT {
 
     @Test
     public void testSeriesOfValidMoves() {
-        String path = getClass().getClassLoader().getResource("input_003.txt").getPath();
+        String path = getClass().getClassLoader().getResource("input_it_003.txt").getPath();
         String[] args = {path};
         simulator.runSimulator(args);
         assertEquals("3,3,NORTH", simulator.getReportString());

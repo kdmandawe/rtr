@@ -6,7 +6,7 @@ import java.util.List;
 
 public class SmartInputHandler implements InputHandler {
     @Override
-    public List<Command> getCommands() {
+    public List<Command> getCommands(String[] inputArgs) {
         return null; //TODO
     }
 }

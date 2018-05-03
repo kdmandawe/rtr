@@ -9,5 +9,5 @@ import java.util.List;
  * Implementation may handle input coming from file, CLI, etc.
  */
 public interface InputHandler {
-    List<Command> getCommands();
+    List<Command> getCommands(String[] inputArgs);
 }

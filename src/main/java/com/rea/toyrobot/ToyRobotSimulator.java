@@ -25,7 +25,7 @@ public class ToyRobotSimulator {
     }
 
     public void runSimulator(String[] args) {
-        List<Command> commandList = inputHandler.getCommands();
+        List<Command> commandList = inputHandler.getCommands(args);
     }
 
     public String getReportString() {

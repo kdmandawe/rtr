@@ -44,7 +44,7 @@ public final class Commands {
                     break;
             }
         } catch (Exception e) {
-            LOG.error("Ivalid command: '{}'. Ignoring command...", rawCommand);
+            LOG.warn("Invalid command: '{}'. Ignoring command...", rawCommand);
         }
         return command;
     }

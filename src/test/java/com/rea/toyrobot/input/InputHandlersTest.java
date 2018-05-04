@@ -40,7 +40,9 @@ public class InputHandlersTest {
 
     @Test
     public void givenNonFileInputShouldReturnListOfCommands() {
-        String data = "MOVE\nLEFT\nRIGHT\r\n";
+        String data = "MOVE\n" +
+                "LEFT\n" +
+                "RIGHT\r\n";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         InputHandler handler = InputHandlers.newSmartInputHandler();
         Optional<List<Command>> commands = handler.getCommands(new String[]{}, toyRobot);

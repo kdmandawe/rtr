@@ -19,7 +19,8 @@ public class SmartInputHandler implements InputHandler {
             InputHandler handler = new FileInputHandler();
             commands = handler.getCommands(inputArgs, toyRobot);
         } else {
-            //TODO stdIn
+            InputHandler handler = new StdInInputHandler();
+            commands = handler.getCommands(inputArgs, toyRobot);
         }
         return commands;
     }

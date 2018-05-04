@@ -29,7 +29,9 @@ public class StdInInputHandlerTest {
     @Test
     public void getCommandsWithContent() {
         //given
-        String data = "MOVE\nLEFT\nRIGHT\r\n";
+        String data = "MOVE\n" +
+                "LEFT\n" +
+                "RIGHT\r\n";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         //when
         StdInInputHandler inputHandler = new StdInInputHandler();

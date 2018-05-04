@@ -40,6 +40,26 @@ public class Placement {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Placement placement = (Placement) o;
+
+        if (xPosition != placement.xPosition) return false;
+        if (yPosition != placement.yPosition) return false;
+        return direction == placement.direction;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = xPosition;
+        result = 31 * result + yPosition;
+        result = 31 * result + direction.hashCode();
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "Placement{" +
                 "xPosition=" + xPosition +

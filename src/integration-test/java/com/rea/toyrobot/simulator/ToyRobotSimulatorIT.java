@@ -22,9 +22,9 @@ public class ToyRobotSimulatorIT {
     @Before
     public void setUp() {
         InputHandler inputHandler = InputHandlers.newSmartInputHandler();
-        ToyRobot toyRobot = ToyRobots.newBasicToyRobot();
         TableTop tableTop = TableTops.newSquareTableTopAllowFall(PropertyProviders.newFilePropertyProvider("application-it.properties"));
-        simulator = new ToyRobotSimulator(inputHandler, toyRobot, tableTop);
+        ToyRobot toyRobot = ToyRobots.newBasicToyRobot(tableTop);
+        simulator = new ToyRobotSimulator(inputHandler, toyRobot);
     }
 
 

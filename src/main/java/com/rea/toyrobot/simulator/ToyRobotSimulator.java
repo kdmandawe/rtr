@@ -2,9 +2,8 @@ package com.rea.toyrobot.simulator;
 
 import com.rea.toyrobot.command.Command;
 import com.rea.toyrobot.input.InputHandler;
+import com.rea.toyrobot.placement.Placement;
 import com.rea.toyrobot.robot.ToyRobot;
-import com.rea.toyrobot.state.State;
-import com.rea.toyrobot.tabletop.TableTop;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,12 +17,10 @@ public final class ToyRobotSimulator {
 
     private final InputHandler inputHandler;
     private final ToyRobot toyRobot;
-    private final TableTop tableTop;
 
-    public ToyRobotSimulator(InputHandler inputHandler, ToyRobot toyRobot, TableTop tableTop) {
+    public ToyRobotSimulator(InputHandler inputHandler, ToyRobot toyRobot) {
         this.inputHandler = inputHandler;
         this.toyRobot = toyRobot;
-        this.tableTop = tableTop;
     }
 
     public void play(String[] args) {
@@ -32,9 +29,9 @@ public final class ToyRobotSimulator {
 
     public String getReportString() {
         String ret = null;
-        State currentState = this.toyRobot.getState();
-        if(currentState != null) {
-            ret =  currentState.toString();
+        Placement currentPlacement = this.toyRobot.getPlacement();
+        if(currentPlacement != null) {
+            ret =  currentPlacement.toString();
         }
         return ret;
     }

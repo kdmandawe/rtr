@@ -2,6 +2,7 @@ package com.rea.toyrobot.simulator;
 
 import com.rea.toyrobot.input.InputHandler;
 import com.rea.toyrobot.robot.ToyRobot;
+import com.rea.toyrobot.robot.ToyRobots;
 import com.rea.toyrobot.tabletop.TableTop;
 
 /**
@@ -20,17 +21,7 @@ public class SimulatorBuilder {
          * @return
          *          ToyRobotStep
          */
-        ToyRobotStep inputHandler(InputHandler inputHandler);
-    }
-
-    public static interface ToyRobotStep {
-        /**
-         * @param toyRobot
-         *          the {@link ToyRobot} that will execute the commands
-         * @return
-         *          TableTopStep
-         */
-        TableTopStep toyRobot(ToyRobot toyRobot);
+        TableTopStep inputHandler(InputHandler inputHandler);
     }
 
     public static interface TableTopStep {
@@ -40,8 +31,18 @@ public class SimulatorBuilder {
          * @return
          *          BuildStep
          */
-        BuildStep tableTop(TableTop tableTop);
+        ToyRobotStep tableTop(TableTop tableTop);
     }
+
+    public static interface ToyRobotStep {
+        /**
+         * @return
+         *          BuildStep
+         */
+        BuildStep basicToyRobot();
+    }
+
+
 
     public static interface BuildStep {
         /**
@@ -57,26 +58,27 @@ public class SimulatorBuilder {
         private TableTop tableTop;
 
         @Override
-        public ToyRobotStep inputHandler(InputHandler inputHandler) {
+        public TableTopStep inputHandler(InputHandler inputHandler) {
             this.inputHandler = inputHandler;
             return this;
         }
 
         @Override
-        public TableTopStep toyRobot(ToyRobot toyRobot) {
-            this.toyRobot = toyRobot;
-            return this;
-        }
-
-        @Override
-        public BuildStep tableTop(TableTop tableTop) {
+        public ToyRobotStep tableTop(TableTop tableTop) {
             this.tableTop = tableTop;
             return this;
         }
 
         @Override
+        public BuildStep basicToyRobot() {
+            this.toyRobot = ToyRobots.newBasicToyRobot(tableTop);
+            return this;
+        }
+
+
+        @Override
         public ToyRobotSimulator build() {
-            return new ToyRobotSimulator(inputHandler, toyRobot, tableTop);
+            return new ToyRobotSimulator(inputHandler, toyRobot);
         }
     }
 }

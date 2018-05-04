@@ -25,13 +25,13 @@ public class InputHandlersTest {
     }
 
     @Test
-    public void inputHandlersShouldCreateInputHandlerInstance() {
+    public void testInputHandlersCreateInputHandlerInstance() {
         InputHandler handler = InputHandlers.newSmartInputHandler();
         assertNotNull(handler);
     }
 
     @Test
-    public void givenFileInputShouldReturnListOfCommands() {
+    public void testFileInputShouldReturnListOfCommands() {
         InputHandler handler = InputHandlers.newSmartInputHandler();
         Optional<List<Command>> commands = handler.getCommands(new String[]{"input_ut_001.txt"}, toyRobot);
         assertTrue(commands.isPresent());
@@ -39,7 +39,7 @@ public class InputHandlersTest {
     }
 
     @Test
-    public void givenNonFileInputShouldReturnListOfCommands() {
+    public void testNonFileInputShouldReturnListOfCommands() {
         String data = "MOVE\n" +
                 "LEFT\n" +
                 "RIGHT\r\n";

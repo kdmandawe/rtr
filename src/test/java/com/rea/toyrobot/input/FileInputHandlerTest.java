@@ -23,7 +23,7 @@ public class FileInputHandlerTest {
     }
 
     @Test
-    public void getCommandsWithContent() {
+    public void testGetCommandsFromFileWithContent() {
         FileInputHandler inputHandler = new FileInputHandler();
         Optional<List<Command>> commands = inputHandler.getCommands(new String[]{"input_ut_002.txt"}, toyRobot);
         assertTrue(commands.isPresent());
@@ -31,14 +31,14 @@ public class FileInputHandlerTest {
     }
 
     @Test
-    public void getCommandsWithOutContent() {
+    public void testGetCommandsFromFileWithOutContent() {
         FileInputHandler inputHandler = new FileInputHandler();
         Optional<List<Command>> commands = inputHandler.getCommands(new String[]{"input_ut_003.txt"}, toyRobot);
         assertTrue(commands.get().isEmpty());
     }
 
     @Test
-    public void getCommandsWithSomeInvalidContent() {
+    public void testGetCommandsFromFileWithSomeInvalidContent() {
         FileInputHandler inputHandler = new FileInputHandler();
         Optional<List<Command>> commands = inputHandler.getCommands(new String[]{"input_ut_004.txt"}, toyRobot);
         assertFalse(commands.get().isEmpty());

@@ -1,7 +1,6 @@
 package com.rea.toyrobot;
 
 import com.rea.toyrobot.input.InputHandlers;
-import com.rea.toyrobot.robot.ToyRobots;
 import com.rea.toyrobot.simulator.SimulatorBuilder;
 import com.rea.toyrobot.simulator.ToyRobotSimulator;
 import com.rea.toyrobot.tabletop.TableTops;
@@ -13,11 +12,12 @@ import com.rea.toyrobot.tabletop.TableTops;
 public class ToyRobotPlayer {
 
     public static void main(String[] args) {
-        //1. Build the simulator (through builder and factories, it's easy for clients like this!)
+        //1. Build the simulator
+        // through builder and factories, it's easy for clients to start run the simulator right away!
         ToyRobotSimulator simulator = SimulatorBuilder.newBuilder()
                 .inputHandler(InputHandlers.newSmartInputHandler())
-                .toyRobot(ToyRobots.newBasicToyRobot())
                 .tableTop(TableTops.newSquareTableTopDontAllowFall(5, 5))
+                .basicToyRobot()
                 .build();
         //2. start playing
         simulator.play(args);

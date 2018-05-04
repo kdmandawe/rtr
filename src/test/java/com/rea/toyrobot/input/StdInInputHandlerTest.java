@@ -27,7 +27,7 @@ public class StdInInputHandlerTest {
     }
 
     @Test
-    public void getCommandsWithContent() {
+    public void testGetCommandsFromStdInWithContent() {
         //given
         String data = "MOVE\n" +
                 "LEFT\n" +
@@ -44,7 +44,7 @@ public class StdInInputHandlerTest {
     }
 
     @Test
-    public void getCommandsWithOutContent() {
+    public void testGetCommandsFromStdWithOutContent() {
         //given
         String data = "\r\n";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
@@ -56,7 +56,7 @@ public class StdInInputHandlerTest {
     }
 
     @Test
-    public void getCommandsWithSomeInvalidContent() {
+    public void testGetCommandsFromStdWithSomeInvalidContent() {
         //given
         String data = "PLACE 0,0,NORTH\n" +
                 "HELLO\n" +

@@ -1,12 +1,7 @@
 package com.rea.toyrobot.simulator;
 
 import com.rea.toyrobot.IntegrationTest;
-import com.rea.toyrobot.common.util.PropertyProviders;
-import com.rea.toyrobot.input.InputHandler;
 import com.rea.toyrobot.input.InputHandlers;
-import com.rea.toyrobot.robot.ToyRobot;
-import com.rea.toyrobot.robot.ToyRobots;
-import com.rea.toyrobot.tabletop.TableTop;
 import com.rea.toyrobot.tabletop.TableTops;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,12 +16,13 @@ public class ToyRobotSimulatorIT {
 
     @Before
     public void setUp() {
-        InputHandler inputHandler = InputHandlers.newSmartInputHandler();
-        TableTop tableTop = TableTops.newSquareTableTopAllowFall(PropertyProviders.newFilePropertyProvider("application-it.properties"));
-        ToyRobot toyRobot = ToyRobots.newBasicToyRobot(tableTop);
-        simulator = new ToyRobotSimulator(inputHandler, toyRobot);
-    }
 
+        simulator = SimulatorBuilder.newBuilder()
+                .inputHandler(InputHandlers.newSmartInputHandler())
+                .tableTop(TableTops.newSquareTableTopDontAllowFall(5, 5))
+                .basicToyRobot()
+                .build();
+    }
 
     @Test
     public void testMoveOneUp() {
@@ -39,7 +35,7 @@ public class ToyRobotSimulatorIT {
     @Test
     public void testFaceLeft() {
         String path = getClass().getClassLoader().getResource("input_it_002.txt").getPath();
-        String[] args = {"input_it_002.txt"};
+        String[] args = {path};
         simulator.play(args);
         assertEquals("0,0,WEST", simulator.getReportString());
     }

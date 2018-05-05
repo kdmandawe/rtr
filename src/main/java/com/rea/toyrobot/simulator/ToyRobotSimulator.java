@@ -5,6 +5,7 @@ import com.rea.toyrobot.input.InputHandler;
 import com.rea.toyrobot.placement.Placement;
 import com.rea.toyrobot.robot.ToyRobot;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,14 +25,22 @@ public final class ToyRobotSimulator {
     }
 
     public void play(String[] args) {
+        //1. Receive commands from player/client
         Optional<List<Command>> commandList = inputHandler.getCommands(args, this.toyRobot);
+
+        //2. Execute commands
+        List<Command> commandStream = commandList.orElse(Collections.emptyList());
+        commandStream.forEach(command -> command.perform());
     }
 
     public String getReportString() {
-        String ret = null;
+        String ret;
         Placement currentPlacement = this.toyRobot.getPlacement();
         if(currentPlacement != null) {
-            ret =  currentPlacement.toString();
+            ret =  String.format("%s,%s,%s", currentPlacement.getxPosition(), currentPlacement.getyPosition(),
+                    currentPlacement.getDirection());
+        } else {
+            ret = "Toy Robot not in play.";
         }
         return ret;
     }

@@ -26,4 +26,15 @@ public class TableTops {
             throw new IllegalArgumentException("Can't create Tabletop for the given property provider.");
         }
     }
+
+    public static TableTop newSquareTableTopDontAllowFall(PropertyProvider properties) {
+        SquareTableTopNoFall tableTop = null;
+        String width = properties.getProperty(Constants.TABLETOP_WIDTH_PROPERTY);
+        String height = properties.getProperty(Constants.TABLETOP_WIDTH_PROPERTY);
+        if(width != null && height != null) {
+            return tableTop = new SquareTableTopNoFall(Integer.parseInt(width), Integer.parseInt(height));
+        } else {
+            throw new IllegalArgumentException("Can't create Tabletop for the given property provider.");
+        }
+    }
 }

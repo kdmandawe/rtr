@@ -17,9 +17,8 @@ import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.*;
 
 public class BasicToyRobotTest {
-//
+
     private TableTop tableTop;
-//    private TestLogger testLogger = TestLoggerFactory.getTestLogger(BasicToyRobot.class);
 
     @Before
     public void setUp() {

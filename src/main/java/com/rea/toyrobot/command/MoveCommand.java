@@ -6,13 +6,13 @@ public class MoveCommand implements Command {
 
     private ToyRobot toyRobot;
 
-    public MoveCommand(ToyRobot toyRobot) {
+    MoveCommand(ToyRobot toyRobot) {
         this.toyRobot = toyRobot;
     }
 
     @Override
     public void perform() {
-        //TODO
+        toyRobot.doMove();
     }
 
     @Override

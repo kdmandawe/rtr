@@ -9,18 +9,18 @@ public final class PlaceCommand implements Command {
     private Placement placement;
     private ToyRobot toyRobot;
 
-    public PlaceCommand(Placement placement, ToyRobot toyRobot) {
+    PlaceCommand(Placement placement, ToyRobot toyRobot) {
         this.placement = placement;
         this.toyRobot = toyRobot;
     }
 
-    public PlaceCommand(int x, int y, Direction direction, ToyRobot toyRobot) {
+    PlaceCommand(int x, int y, Direction direction, ToyRobot toyRobot) {
         this(new Placement(x, y, direction), toyRobot);
     }
 
     @Override
     public void perform() {
-        //TODO
+        toyRobot.doPlace(placement);
     }
 
     @Override

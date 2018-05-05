@@ -1,18 +1,19 @@
 package com.rea.toyrobot.command;
 
 import com.rea.toyrobot.robot.ToyRobot;
+import com.rea.toyrobot.robot.TurnDirection;
 
 public class RightCommand implements Command {
 
     private ToyRobot toyRobot;
 
-    public RightCommand(ToyRobot toyRobot) {
+    RightCommand(ToyRobot toyRobot) {
         this.toyRobot = toyRobot;
     }
 
     @Override
     public void perform() {
-        //TODO
+        toyRobot.doTurn(TurnDirection.RIGHT);
     }
 
     @Override

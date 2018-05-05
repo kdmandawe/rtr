@@ -6,13 +6,13 @@ public class ReportCommand implements Command {
 
     private ToyRobot toyRobot;
 
-    public ReportCommand(ToyRobot toyRobot) {
+    ReportCommand(ToyRobot toyRobot) {
         this.toyRobot = toyRobot;
     }
 
     @Override
     public void perform() {
-        //TODO
+        toyRobot.doReport();
     }
 
     @Override

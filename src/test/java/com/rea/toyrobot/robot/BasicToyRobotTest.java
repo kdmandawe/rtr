@@ -1,18 +1,25 @@
 package com.rea.toyrobot.robot;
 
+import ch.qos.logback.classic.spi.LoggingEvent;
+import ch.qos.logback.core.Appender;
 import com.rea.toyrobot.placement.Direction;
 import com.rea.toyrobot.placement.Placement;
 import com.rea.toyrobot.tabletop.TableTop;
 import com.rea.toyrobot.tabletop.TableTops;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentMatcher;
+import org.slf4j.LoggerFactory;
 
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.*;
+import static org.mockito.ArgumentMatchers.argThat;
+import static org.mockito.Mockito.*;
 
 public class BasicToyRobotTest {
-
+//
     private TableTop tableTop;
+//    private TestLogger testLogger = TestLoggerFactory.getTestLogger(BasicToyRobot.class);
 
     @Before
     public void setUp() {
@@ -71,6 +78,15 @@ public class BasicToyRobotTest {
     }
 
     @Test
+    public void testMoveRobotNotInPlay() {
+        BasicToyRobot toyRobot = new BasicToyRobot(tableTop);
+        toyRobot.doMove();
+        assertFalse(toyRobot.inPlay());
+        Placement currentPlacement = toyRobot.getPlacement();
+        assertNull(currentPlacement);
+    }
+
+    @Test
     public void testTurnRight() {
         BasicToyRobot toyRobot = new BasicToyRobot(tableTop);
         toyRobot.doPlace(new Placement(0, 0, Direction.NORTH));
@@ -92,6 +108,15 @@ public class BasicToyRobotTest {
         assertEquals(0, currentPlacement.getxPosition());
         assertEquals(0, currentPlacement.getyPosition());
         assertEquals(Direction.WEST, currentPlacement.getDirection());
+    }
+
+    @Test
+    public void testTurnLeftNotInplay() {
+        BasicToyRobot toyRobot = new BasicToyRobot(tableTop);
+        toyRobot.doTurn(TurnDirection.LEFT);
+        assertFalse(toyRobot.inPlay());
+        Placement currentPlacement = toyRobot.getPlacement();
+        assertNull(currentPlacement);
     }
 
     @Test
@@ -120,14 +145,46 @@ public class BasicToyRobotTest {
 
     @Test
     public void testDoReportLogConsoleNoError() {
+
+        //setup mock appender
+        ch.qos.logback.classic.Logger root = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(ch.qos.logback.classic.Logger.ROOT_LOGGER_NAME);
+        final Appender mockAppender = mock(Appender.class);
+        when(mockAppender.getName()).thenReturn("MOCK");
+        root.addAppender(mockAppender);
+
         BasicToyRobot toyRobot = new BasicToyRobot(tableTop);
         toyRobot.doPlace(new Placement(0, 0, Direction.NORTH));
         toyRobot.doReport();
+        //Check if report is logged
+        verify(mockAppender).doAppend(argThat(new ArgumentMatcher() {
+            @Override
+            public boolean matches(final Object argument) {
+                return ((LoggingEvent)argument).getFormattedMessage().contains("0,0,NORTH");
+            }
+        }));
+
         toyRobot.doMove();
         toyRobot.doReport();
+        //Check if report is logged
+        verify(mockAppender).doAppend(argThat(new ArgumentMatcher() {
+            @Override
+            public boolean matches(final Object argument) {
+                return ((LoggingEvent)argument).getFormattedMessage().contains("0,1,NORTH");
+            }
+        }));
+
         toyRobot.doPlace(new Placement(2, 2, Direction.NORTH));
         toyRobot.doTurn(TurnDirection.LEFT);
         toyRobot.doReport();
+        //Check if report is logged
+        verify(mockAppender).doAppend(argThat(new ArgumentMatcher() {
+            @Override
+            public boolean matches(final Object argument) {
+                return ((LoggingEvent)argument).getFormattedMessage().contains("2,2,WEST");
+            }
+        }));
+        // clean up
+        root.detachAppender(mockAppender);
     }
 
 }

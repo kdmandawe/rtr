@@ -8,8 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -28,14 +26,13 @@ public class FileInputHandler implements InputHandler {
         }
 
         try {
-            URL url = getClass().getClassLoader().getResource(inputArgs[0]);
-            List<String> inputRawCommands = Files.readAllLines(Paths.get(url.toURI()));
+            List<String> inputRawCommands = Files.readAllLines(Paths.get(inputArgs[0]));
             commands = inputRawCommands.stream()
                     .map(str -> Commands.newCommand(str, toyRobot))
                     .filter(cmd -> cmd != null)
                     .collect(Collectors.toList());
 
-        } catch (IOException | URISyntaxException e) {
+        } catch (IOException e) {
             LOG.error("Could not read input: " + e.getMessage());
             throw new SimulatorException("Error with reading from file", e);
         }

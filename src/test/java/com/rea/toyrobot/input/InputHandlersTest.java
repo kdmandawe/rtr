@@ -33,7 +33,8 @@ public class InputHandlersTest {
     @Test
     public void testFileInputShouldReturnListOfCommands() {
         InputHandler handler = InputHandlers.newSmartInputHandler();
-        Optional<List<Command>> commands = handler.getCommands(new String[]{"input_ut_001.txt"}, toyRobot);
+        String path = getClass().getClassLoader().getResource("input_ut_001.txt").getPath();
+        Optional<List<Command>> commands = handler.getCommands(new String[]{path}, toyRobot);
         assertTrue(commands.isPresent());
         assertEquals(3, commands.get().size());
     }

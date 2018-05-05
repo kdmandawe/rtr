@@ -25,7 +25,8 @@ public class FileInputHandlerTest {
     @Test
     public void testGetCommandsFromFileWithContent() {
         FileInputHandler inputHandler = new FileInputHandler();
-        Optional<List<Command>> commands = inputHandler.getCommands(new String[]{"input_ut_002.txt"}, toyRobot);
+        String path = getClass().getClassLoader().getResource("input_ut_002.txt").getPath();
+        Optional<List<Command>> commands = inputHandler.getCommands(new String[]{path}, toyRobot);
         assertTrue(commands.isPresent());
         assertEquals(3, commands.get().size());
     }
@@ -33,14 +34,16 @@ public class FileInputHandlerTest {
     @Test
     public void testGetCommandsFromFileWithOutContent() {
         FileInputHandler inputHandler = new FileInputHandler();
-        Optional<List<Command>> commands = inputHandler.getCommands(new String[]{"input_ut_003.txt"}, toyRobot);
+        String path = getClass().getClassLoader().getResource("input_ut_003.txt").getPath();
+        Optional<List<Command>> commands = inputHandler.getCommands(new String[]{path}, toyRobot);
         assertTrue(commands.get().isEmpty());
     }
 
     @Test
     public void testGetCommandsFromFileWithSomeInvalidContent() {
         FileInputHandler inputHandler = new FileInputHandler();
-        Optional<List<Command>> commands = inputHandler.getCommands(new String[]{"input_ut_004.txt"}, toyRobot);
+        String path = getClass().getClassLoader().getResource("input_ut_004.txt").getPath();
+        Optional<List<Command>> commands = inputHandler.getCommands(new String[]{path}, toyRobot);
         assertFalse(commands.get().isEmpty());
         assertTrue(commands.get().size() == 2);
     }

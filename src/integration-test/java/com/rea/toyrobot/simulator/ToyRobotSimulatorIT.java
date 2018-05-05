@@ -39,7 +39,7 @@ public class ToyRobotSimulatorIT {
     @Test
     public void testFaceLeft() {
         String path = getClass().getClassLoader().getResource("input_it_002.txt").getPath();
-        String[] args = {path};
+        String[] args = {"input_it_002.txt"};
         simulator.play(args);
         assertEquals("0,0,WEST", simulator.getReportString());
     }

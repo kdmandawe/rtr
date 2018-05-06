@@ -3,7 +3,7 @@ package com.rea.toyrobot.common.util;
 /**
  * A class containing application constants
  */
-public class Constants {
+public final class Constants {
 
     /************** TABLE TOP *****************/
     public static final String TABLETOP_WIDTH_PROPERTY = "tabletop.width";

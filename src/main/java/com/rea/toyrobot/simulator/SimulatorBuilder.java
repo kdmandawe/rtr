@@ -14,7 +14,7 @@ public class SimulatorBuilder {
         return new CreationSteps();
     }
 
-    public static interface InputHandlerStep {
+    public interface InputHandlerStep {
         /**
          * @param inputHandler
          *          the {@link InputHandler} to be used for reading input by the simulator
@@ -24,7 +24,7 @@ public class SimulatorBuilder {
         TableTopStep inputHandler(InputHandler inputHandler);
     }
 
-    public static interface TableTopStep {
+    public interface TableTopStep {
         /**
          * @param tableTop
          *          the {@link TableTop} that will be used to place the ToyRobot to
@@ -34,7 +34,7 @@ public class SimulatorBuilder {
         ToyRobotStep tableTop(TableTop tableTop);
     }
 
-    public static interface ToyRobotStep {
+    public interface ToyRobotStep {
         /**
          * @return
          *          BuildStep
@@ -44,7 +44,7 @@ public class SimulatorBuilder {
 
 
 
-    public static interface BuildStep {
+    public interface BuildStep {
         /**
          * @return an instance of {@link ToyRobotSimulator} based on the parameters passed during the creation.
          */

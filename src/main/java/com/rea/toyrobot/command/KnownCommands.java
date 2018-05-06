@@ -31,7 +31,7 @@ public enum KnownCommands {
     /**
      * Convert a given string to Command instance.
      *
-     * @param command the command String to conver to {@link KnownCommands}
+     * @param command the command String to convert to {@link KnownCommands}
      * @return the           Command instance
      */
     public static KnownCommands fromString(String command) {

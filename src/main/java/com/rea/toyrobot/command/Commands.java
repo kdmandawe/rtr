@@ -1,5 +1,6 @@
 package com.rea.toyrobot.command;
 
+import com.rea.toyrobot.common.exception.SimulatorException;
 import com.rea.toyrobot.placement.Direction;
 import com.rea.toyrobot.placement.Placement;
 import com.rea.toyrobot.robot.ToyRobot;
@@ -54,6 +55,9 @@ public final class Commands {
         int xPos = Integer.parseInt(tokens[0]);
         int yPos = Integer.parseInt(tokens[1]);
         Direction direction = Direction.fromString(tokens[2]);
+        if(direction == null) {
+            throw new SimulatorException("Invalid Direction String");
+        }
         return new Placement(xPos, yPos, direction);
     }
 }

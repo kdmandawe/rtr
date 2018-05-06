@@ -58,6 +58,53 @@ To run both unit tests and integration tests, execute:
 ```
 mvn clean verify -P ci
 ```
+
+## Solution and Design Considerations
+
+### Real World Objects
+Uri, my two-year old boy walks by the toy section of a department store. A **robot-fanatic** as he is, he suddenly 
+stopped by a **setup** of a **table** and a shiny **robot** wondering what it does. A salesman immediately turned on the
+the **setup** and gave commands like 'PLACE 0,0,NORTH', 'MOVE', 'LEFT', 'RIGHT', 'REPORT'. Awesome! it's like a 
+'your-wish-is-my-command' experience! The robot moves and reported the correct **placement**!
+
+### OOP Goodness
+
+So much of the story, the design is purely object-oriented. That's the story I'm imagining while I'm thinking of how to
+implement the solution.
+
+#### Key Players (or Objects :)
+- ToyRobot - the shiny smart robot in the story above. This is the main player. He performs accordingly depending on what 
+command is fed.
+- TableTop - the table in the story above. This is where the robot will perform its movements. The ToyRobot therefore has
+to be assigned with a TableTop
+- ToyRobotSimulator - this corresponds to the 'setup' on the story above. This will hold the key Objects above. First it
+receives the raw commands and then translate those into Command objects which the robot can understand for the 
+corresponding action
+- InputHandler - the ToyRobotSimulator will have this to understand input commands
+
+#### DESIGN PATTERNS
+
+- Command Pattern - this is being used to make the ToyRobotSimulator oblivious of the actual action the robot does for
+each command. The simulator's main responsibility is to accept commands and call 'perform' method in each command. This 
+promotes loose coupling and extensibility.
+- Factory Pattern - provides convenience to clients when trying to create instances of the object especially if there are
+conditions that would determine which type of instance to create. Some classes that are factories are: 
+`Commands`, `InputHandlers`, `ToyRobots`, `TableTops` and `PropertyProviders`
+- Step Builder Pattern - The creation of ToyRobotSimulator instance is somehow complex. A first time client/user will 
+need to dig into the constructors and javadocs probably. This pattern solves it! Just start with 
+`SimulatorBuilder.newBuilder()` and follow with succeeding dot(.), it will then give you what's the next method that you
+should invoke before finally arriving to `.build()` which will give the final instance.
+
+#### LOOSE COUPLING, OPEN-CLOSED PRINCIPLE
+
+- Can I add Commands easily?
+- Can I add something like AdvancedToyRobot that does a fancier stuff?
+- Will I touch already released codes when I want to modify something or worse introduce bugs?
+- Will someone new to the team understand my code easily and doesn't have to call me to fix something?
+
+The above are top considerations on design of this solution. To promote loose coupling, you'll be seeing heavy use of 
+interfaces and as mentioned above, design patterns.
+
 ## Author
 
 Kenneth Mandawe <kdmandawe06@gmail.com>

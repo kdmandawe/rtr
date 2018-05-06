@@ -9,20 +9,42 @@ public class Placement {
     private final int yPosition;
     private final Direction direction;
 
+    /**
+     * Instantiates a new Placement.
+     *
+     * @param xPosition the x position
+     * @param yPosition the y position
+     * @param direction the direction
+     */
     public Placement(int xPosition, int yPosition, Direction direction) {
         this.xPosition = xPosition;
         this.yPosition = yPosition;
         this.direction = direction;
     }
 
+    /**
+     * Gets x position.
+     *
+     * @return the x position
+     */
     public int getxPosition() {
         return xPosition;
     }
 
+    /**
+     * Gets y position.
+     *
+     * @return the y position
+     */
     public int getyPosition() {
         return yPosition;
     }
 
+    /**
+     * Gets direction.
+     *
+     * @return the direction
+     */
     public Direction getDirection() {
         return direction;
     }

@@ -5,7 +5,7 @@ package com.rea.toyrobot.command;
  */
 public interface Command {
     /**
-     * Executes the command
+     * Executes the command and delegates the toy robot to perform the actual action
      */
     void perform();
 }

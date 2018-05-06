@@ -9,6 +9,11 @@ public class InputHandlers {
         //should not be instantiated
     }
 
+    /**
+     * Creates an instance of {@link SmartInputHandler}.
+     *
+     * @return the instance input handler
+     */
     public static InputHandler newSmartInputHandler() {
         return new SmartInputHandler();
     }

@@ -14,6 +14,13 @@ public class ToyRobotPlayer {
 
     private static final String APPLICATON_PROPERTIES = "application.properties";
 
+    /**
+     * The entry point of application. This uses the very convenient SimulatorBuilder which
+     * implements the Step Builder pattern and therefore provides an easy-to-follow guide(as you code)
+     * on how to create and run the simulator instance.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         //1. Build the simulator
         // through builder and factories, it's easy for clients to start run the simulator right away!

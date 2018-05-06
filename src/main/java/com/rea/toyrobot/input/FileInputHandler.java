@@ -15,10 +15,16 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * The type File input handler.
+ */
 public class FileInputHandler implements InputHandler {
 
     private static final Logger LOG = LoggerFactory.getLogger(FileInputHandler.class);
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<List<Command>> getCommands(String[] inputArgs, ToyRobot toyRobot) {
         List<Command> commands;

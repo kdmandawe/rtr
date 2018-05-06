@@ -20,8 +20,12 @@ public final class Commands {
     private Commands() {
         //should not be instantiated
     }
+
     /**
+     * Creates an instance of {@link Command} from the rawCommand param.
+     *
      * @param rawCommand The command string taken from input (per line)
+     * @param toyRobot   the toy robot
      * @return the appropriate instance of {@link Command}
      */
     public static Command newCommand(final String rawCommand, ToyRobot toyRobot) {

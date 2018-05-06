@@ -12,14 +12,34 @@ public class TableTops {
 
     }
 
+    /**
+     * New square table top which does not allow robots to fall.
+     *
+     * @param width  the width
+     * @param height the height
+     * @return the table top
+     */
     public static TableTop newSquareTableTopDontAllowFall(int width, int height) {
         return new SquareTableTopNoFall(width, height);
     }
 
+    /**
+     * New square table top which allows robots to fall.
+     *
+     * @param width  the width
+     * @param height the height
+     * @return the table top
+     */
     public static TableTop newSquareTableTopAllowFall(int width, int height) {
         return new SquareTableTopAllowFall(width, height);
     }
 
+    /**
+     * New square table top which allows robots to fall.
+     *
+     * @param properties the {@link PropertyProvider} instance where properties can be retrieved
+     * @return the table top
+     */
     public static TableTop newSquareTableTopAllowFall(PropertyProvider properties) {
         String width = properties.getProperty(Constants.TABLETOP_WIDTH_PROPERTY);
         String height = properties.getProperty(Constants.TABLETOP_HEIGHT_PROPERTY);
@@ -30,6 +50,12 @@ public class TableTops {
         }
     }
 
+    /**
+     * New square table top which does not allow robots to fall.
+     *
+     * @param properties the {@link PropertyProvider} instance where properties can be retrieved
+     * @return the table top
+     */
     public static TableTop newSquareTableTopDontAllowFall(PropertyProvider properties) {
         String width = properties.getProperty(Constants.TABLETOP_WIDTH_PROPERTY);
         String height = properties.getProperty(Constants.TABLETOP_WIDTH_PROPERTY);

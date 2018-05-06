@@ -7,8 +7,15 @@ import com.rea.toyrobot.robot.ToyRobot;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * A {@link InputHandler} implementation to receive input is coming from stdIn
+ *
+ */
 public class StdInInputHandler implements InputHandler {
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<List<Command>> getCommands(String[] inputArgs, ToyRobot toyRobot) {
         List<Command> commands;
@@ -41,10 +48,5 @@ public class StdInInputHandler implements InputHandler {
                 .collect(Collectors.toList());
 
         return Optional.ofNullable(commands);
-    }
-
-    public static void main(String[] args) {
-        StdInInputHandler std = new StdInInputHandler();
-        std.getCommands(null, null);
     }
 }

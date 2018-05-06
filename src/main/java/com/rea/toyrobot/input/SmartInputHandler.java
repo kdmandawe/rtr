@@ -12,6 +12,9 @@ import java.util.Optional;
  */
 public class SmartInputHandler implements InputHandler {
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Optional<List<Command>> getCommands(String[] inputArgs, ToyRobot toyRobot) {
         Optional<List<Command>> commands;

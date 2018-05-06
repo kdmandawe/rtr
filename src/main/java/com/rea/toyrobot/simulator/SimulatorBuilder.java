@@ -10,42 +10,61 @@ import com.rea.toyrobot.tabletop.TableTop;
  */
 public class SimulatorBuilder {
 
+    /**
+     * New builder input handler step.
+     *
+     * @return the input handler step
+     */
     public static InputHandlerStep newBuilder() {
         return new CreationSteps();
     }
 
+    /**
+     * The interface Input handler step.
+     */
     public interface InputHandlerStep {
         /**
-         * @param inputHandler
-         *          the {@link InputHandler} to be used for reading input by the simulator
-         * @return
-         *          ToyRobotStep
+         * Input handler table top step.
+         *
+         * @param inputHandler the {@link InputHandler} to be used for reading input by the simulator
+         * @return ToyRobotStep table top step
          */
         TableTopStep inputHandler(InputHandler inputHandler);
     }
 
+    /**
+     * The interface Table top step.
+     */
     public interface TableTopStep {
         /**
-         * @param tableTop
-         *          the {@link TableTop} that will be used to place the ToyRobot to
-         * @return
-         *          BuildStep
+         * Table top toy robot step.
+         *
+         * @param tableTop the {@link TableTop} that will be used to place the ToyRobot to
+         * @return BuildStep toy robot step
          */
         ToyRobotStep tableTop(TableTop tableTop);
     }
 
+    /**
+     * The interface Toy robot step.
+     */
     public interface ToyRobotStep {
         /**
-         * @return
-         *          BuildStep
+         * Basic toy robot build step.
+         *
+         * @return BuildStep build step
          */
         BuildStep basicToyRobot();
     }
 
 
-
+    /**
+     * The interface Build step.
+     */
     public interface BuildStep {
         /**
+         * Build toy robot simulator.
+         *
          * @return an instance of {@link ToyRobotSimulator} based on the parameters passed during the creation.
          */
         ToyRobotSimulator build();

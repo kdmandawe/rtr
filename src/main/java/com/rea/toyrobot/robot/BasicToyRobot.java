@@ -9,6 +9,11 @@ import org.slf4j.LoggerFactory;
 import static com.rea.toyrobot.placement.Direction.*;
 import static com.rea.toyrobot.robot.TurnDirection.LEFT;
 
+/**
+ * This class represents a Basic Toy Robot. This kind of robot can only understand basic commands
+ * such as 'PLACE X,Y,F', 'MOVE', 'LEFT', 'RIGHT', and 'REPORT'. These commands are translated
+ * to the corresponding actions as defined in the {@link ToyRobot}
+ */
 public class BasicToyRobot implements ToyRobot {
 
     private static final Logger LOG = LoggerFactory.getLogger(BasicToyRobot.class);
@@ -17,21 +22,35 @@ public class BasicToyRobot implements ToyRobot {
     private Placement placement;
     private boolean inPlay;
 
+    /**
+     * Instantiates a new Basic toy robot.
+     *
+     * @param tableTop the table top where the robot will do the command actions
+     */
     BasicToyRobot(TableTop tableTop) {
         this.tableTop = tableTop;
         this.inPlay = false;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Placement getPlacement() {
         return placement;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean inPlay() {
         return inPlay;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void doPlace(Placement newPlacement) {
         LOG.debug("Executing PLACE Command..");
@@ -44,6 +63,9 @@ public class BasicToyRobot implements ToyRobot {
         LOG.debug("Current: {}", placement);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void doMove() {
         LOG.debug("Executing MOVE Command..");
@@ -79,6 +101,9 @@ public class BasicToyRobot implements ToyRobot {
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void doTurn(TurnDirection direction) {
         LOG.debug("Executing {} Command..", direction);
@@ -110,6 +135,9 @@ public class BasicToyRobot implements ToyRobot {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void doReport() {
         LOG.debug("Executing REPORT Command..");

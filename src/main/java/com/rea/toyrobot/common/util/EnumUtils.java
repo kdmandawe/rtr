@@ -11,16 +11,13 @@ public class EnumUtils {
     private EnumUtils(){}
 
     /**
-     * Checks if the specified name is a valid enum for the class.
+     * Checks if the specified name is a valid enum for the class and then converts it to
+     * the expected enum.
      *
-     * @param <T>
-     *          the type of the enumeration
-     * @param enumClass
-     *          the class of the enum to query, not null
-     * @param name
-     *          the enum name, null returns false
-     * @return
-     *          the Optional containing the enum
+     * @param <T>       the type of the enumeration
+     * @param enumClass the class of the enum to query, not null
+     * @param name      the enum name, null returns false
+     * @return the           Optional containing the enum
      */
     public static <T extends Enum<?>> Optional<T> fromString(Class<T> enumClass,
                                                              String name) {

@@ -19,11 +19,22 @@ public final class ToyRobotSimulator {
     private final InputHandler inputHandler;
     private final ToyRobot toyRobot;
 
+    /**
+     * Instantiates a new Toy robot simulator.
+     *
+     * @param inputHandler the input handler to receive commands from client
+     * @param toyRobot     the toy robot to execute the commands
+     */
     ToyRobotSimulator(InputHandler inputHandler, ToyRobot toyRobot) {
         this.inputHandler = inputHandler;
         this.toyRobot = toyRobot;
     }
 
+    /**
+     * Simulates the actual recording of commands and translating them to Robot Actions
+     *
+     * @param args the arguments as input from user/client
+     */
     public void play(String[] args) {
         //1. Receive commands from player/client
         Optional<List<Command>> commandList = inputHandler.getCommands(args, this.toyRobot);
@@ -33,6 +44,11 @@ public final class ToyRobotSimulator {
         commandStream.forEach(Command::perform);
     }
 
+    /**
+     * Publishes the report string indicating current placement of robot.
+     *
+     * @return the report string
+     */
     public String getReportString() {
         String ret;
         Placement currentPlacement = this.toyRobot.getPlacement();

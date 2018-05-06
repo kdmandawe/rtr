@@ -2,9 +2,27 @@ package com.rea.toyrobot.placement;
 
 import com.rea.toyrobot.common.util.EnumUtils;
 
+/**
+ * The enum Direction represents where a {@link com.rea.toyrobot.robot.ToyRobot} is facing.
+ */
 public enum Direction {
 
-    NORTH, SOUTH, EAST, WEST;
+    /**
+     * North direction.
+     */
+    NORTH,
+    /**
+     * South direction.
+     */
+    SOUTH,
+    /**
+     * East direction.
+     */
+    EAST,
+    /**
+     * West direction.
+     */
+    WEST;
 
     /**
      * Convert a given string to {@link Direction} instance.

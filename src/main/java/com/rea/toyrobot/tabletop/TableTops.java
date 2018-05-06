@@ -8,6 +8,10 @@ import com.rea.toyrobot.common.util.PropertyProvider;
  */
 public class TableTops {
 
+    private TableTops () {
+
+    }
+
     public static TableTop newSquareTableTopDontAllowFall(int width, int height) {
         return new SquareTableTopNoFall(width, height);
     }
@@ -17,22 +21,20 @@ public class TableTops {
     }
 
     public static TableTop newSquareTableTopAllowFall(PropertyProvider properties) {
-        SquareTableTopAllowFall tableTop = null;
         String width = properties.getProperty(Constants.TABLETOP_WIDTH_PROPERTY);
-        String height = properties.getProperty(Constants.TABLETOP_WIDTH_PROPERTY);
+        String height = properties.getProperty(Constants.TABLETOP_HEIGHT_PROPERTY);
         if(width != null && height != null) {
-            return tableTop = new SquareTableTopAllowFall(Integer.parseInt(width), Integer.parseInt(height));
+            return new SquareTableTopAllowFall(Integer.parseInt(width), Integer.parseInt(height));
         } else {
             throw new IllegalArgumentException("Can't create Tabletop for the given property provider.");
         }
     }
 
     public static TableTop newSquareTableTopDontAllowFall(PropertyProvider properties) {
-        SquareTableTopNoFall tableTop = null;
         String width = properties.getProperty(Constants.TABLETOP_WIDTH_PROPERTY);
         String height = properties.getProperty(Constants.TABLETOP_WIDTH_PROPERTY);
         if(width != null && height != null) {
-            return tableTop = new SquareTableTopNoFall(Integer.parseInt(width), Integer.parseInt(height));
+            return new SquareTableTopNoFall(Integer.parseInt(width), Integer.parseInt(height));
         } else {
             throw new IllegalArgumentException("Can't create Tabletop for the given property provider.");
         }

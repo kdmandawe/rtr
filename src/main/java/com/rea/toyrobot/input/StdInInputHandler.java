@@ -4,10 +4,7 @@ import com.rea.toyrobot.command.Command;
 import com.rea.toyrobot.command.Commands;
 import com.rea.toyrobot.robot.ToyRobot;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class StdInInputHandler implements InputHandler {
@@ -40,7 +37,7 @@ public class StdInInputHandler implements InputHandler {
 
         commands = inputRawCommands.stream()
                 .map(str -> Commands.newCommand(str, toyRobot))
-                .filter(cmd -> cmd != null)
+                .filter(Objects::nonNull)
                 .collect(Collectors.toList());
 
         return Optional.ofNullable(commands);

@@ -11,10 +11,9 @@ public class FilePropertyProvider implements PropertyProvider{
 
     private static final Logger LOG = LoggerFactory.getLogger(FilePropertyProvider.class);
 
-    private Properties props;
-    private InputStream input;
+    private final Properties props;
 
-    public FilePropertyProvider(String fileName) {
+    FilePropertyProvider(String fileName) {
         props = new Properties();
         try(InputStream input = getClass().getClassLoader().getResourceAsStream(fileName)) {
             props.load(input);

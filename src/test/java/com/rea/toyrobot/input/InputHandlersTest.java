@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 public class InputHandlersTest {
 
     private ToyRobot toyRobot;
-    private InputStream stdin = System.in;
+    private final InputStream stdin = System.in;
 
     @Before
     public void setUp() {

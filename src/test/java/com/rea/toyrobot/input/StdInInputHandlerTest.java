@@ -19,7 +19,7 @@ import static org.junit.Assert.assertTrue;
 public class StdInInputHandlerTest {
 
     private ToyRobot toyRobot;
-    private InputStream stdin = System.in;
+    private final InputStream stdin = System.in;
 
     @Before
     public void setup() {

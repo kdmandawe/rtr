@@ -5,6 +5,10 @@ package com.rea.toyrobot.common.util;
  */
 public class PropertyProviders {
 
+    private PropertyProviders() {
+        //should not be instantiated
+    }
+
     public static PropertyProvider newFilePropertyProvider(String fileName) {
         return new FilePropertyProvider(fileName);
     }

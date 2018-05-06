@@ -14,7 +14,7 @@ public class ToyRobotSimulatorIT {
 
     private static final String ROBOT_NOT_IN_PLAY = "Toy Robot not in play.";
 
-    ToyRobotSimulator simulator;
+    private ToyRobotSimulator simulator;
 
     @Before
     public void setUp() {

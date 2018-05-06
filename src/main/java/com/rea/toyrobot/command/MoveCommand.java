@@ -4,7 +4,7 @@ import com.rea.toyrobot.robot.ToyRobot;
 
 public class MoveCommand implements Command {
 
-    private ToyRobot toyRobot;
+    private final ToyRobot toyRobot;
 
     MoveCommand(ToyRobot toyRobot) {
         this.toyRobot = toyRobot;

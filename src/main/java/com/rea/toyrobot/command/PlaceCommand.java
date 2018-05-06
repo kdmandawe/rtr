@@ -6,8 +6,8 @@ import com.rea.toyrobot.robot.ToyRobot;
 
 public final class PlaceCommand implements Command {
 
-    private Placement placement;
-    private ToyRobot toyRobot;
+    private final Placement placement;
+    private final ToyRobot toyRobot;
 
     PlaceCommand(Placement placement, ToyRobot toyRobot) {
         this.placement = placement;

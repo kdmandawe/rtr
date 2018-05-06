@@ -9,7 +9,7 @@ import com.rea.toyrobot.robot.TurnDirection;
  */
 public class LeftCommand implements Command {
 
-    private ToyRobot toyRobot;
+    private final ToyRobot toyRobot;
 
     LeftCommand(ToyRobot toyRobot) {
         this.toyRobot = toyRobot;

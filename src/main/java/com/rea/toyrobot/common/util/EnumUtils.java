@@ -29,11 +29,9 @@ public class EnumUtils {
             return Optional.empty();
         }
 
-        final Optional<T> first = Stream.of(enumClass.getEnumConstants())
+        return Stream.of(enumClass.getEnumConstants())
                 .filter(enumInstance -> enumInstance.name().compareToIgnoreCase(name) == 0)
                 .findFirst();
-
-        return first;
     }
 
 }

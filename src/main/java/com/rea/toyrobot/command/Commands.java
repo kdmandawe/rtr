@@ -17,6 +17,9 @@ public final class Commands {
 
     private static final Logger LOG = LoggerFactory.getLogger(Commands.class);
 
+    private Commands() {
+        //should not be instantiated
+    }
     /**
      * @param rawCommand The command string taken from input (per line)
      * @return the appropriate instance of {@link Command}

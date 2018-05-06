@@ -13,7 +13,7 @@ public class BasicToyRobot implements ToyRobot {
 
     private static final Logger LOG = LoggerFactory.getLogger(BasicToyRobot.class);
 
-    private TableTop tableTop;
+    private final TableTop tableTop;
     private Placement placement;
     private boolean inPlay;
 

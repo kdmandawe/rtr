@@ -14,7 +14,7 @@ public class SmartInputHandler implements InputHandler {
 
     @Override
     public Optional<List<Command>> getCommands(String[] inputArgs, ToyRobot toyRobot) {
-        Optional<List<Command>> commands = Optional.empty();
+        Optional<List<Command>> commands;
         if(inputArgs != null && inputArgs.length  == 1) {
             InputHandler handler = new FileInputHandler();
             commands = handler.getCommands(inputArgs, toyRobot);

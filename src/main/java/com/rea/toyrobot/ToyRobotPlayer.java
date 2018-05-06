@@ -27,8 +27,5 @@ public class ToyRobotPlayer {
 
         //2. start playing
         simulator.play(args);
-
-        ToyRobotSimulator simulator1 = SimulatorBuilder.newBuilder().inputHandler(InputHandlers.newSmartInputHandler
-                ()).tableTop(TableTops.newSquareTableTopDontAllowFall(5, 5)).basicToyRobot().build();
     }
 }

@@ -18,4 +18,10 @@ public class SimulatorBuilderTest {
         assertNotNull(simulator);
     }
 
+    @Test
+    public void testConstruct() {
+        SimulatorBuilder builder = new SimulatorBuilder();
+        assertNotNull(builder);
+    }
+
 }

@@ -5,7 +5,7 @@ public abstract class SquareTableTop implements TableTop {
     private int width;
     private int height;
 
-    public SquareTableTop(int width, int height) {
+    SquareTableTop(int width, int height) {
         if(width < 0 || height < 0 || width != height) {
             throw new IllegalArgumentException("Impossible to create Square TableTop with passed values!");
         }

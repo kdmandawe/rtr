@@ -5,9 +5,9 @@ package com.rea.toyrobot.placement;
  */
 public class Placement {
 
-    private int xPosition;
-    private int yPosition;
-    private Direction direction;
+    private final int xPosition;
+    private final int yPosition;
+    private final Direction direction;
 
     public Placement(int xPosition, int yPosition, Direction direction) {
         this.xPosition = xPosition;
@@ -19,24 +19,12 @@ public class Placement {
         return xPosition;
     }
 
-    public void setxPosition(int xPosition) {
-        this.xPosition = xPosition;
-    }
-
     public int getyPosition() {
         return yPosition;
     }
 
-    public void setyPosition(int yPosition) {
-        this.yPosition = yPosition;
-    }
-
     public Direction getDirection() {
         return direction;
-    }
-
-    public void setDirection(Direction direction) {
-        this.direction = direction;
     }
 
     @Override
@@ -46,9 +34,7 @@ public class Placement {
 
         Placement placement = (Placement) o;
 
-        if (xPosition != placement.xPosition) return false;
-        if (yPosition != placement.yPosition) return false;
-        return direction == placement.direction;
+        return xPosition == placement.xPosition && yPosition == placement.yPosition && direction == placement.direction;
     }
 
     @Override

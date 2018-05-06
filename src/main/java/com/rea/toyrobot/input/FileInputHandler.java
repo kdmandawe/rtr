@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -29,11 +30,11 @@ public class FileInputHandler implements InputHandler {
             List<String> inputRawCommands = Files.readAllLines(Paths.get(inputArgs[0]));
             commands = inputRawCommands.stream()
                     .map(str -> Commands.newCommand(str, toyRobot))
-                    .filter(cmd -> cmd != null)
+                    .filter(Objects::nonNull)
                     .collect(Collectors.toList());
 
         } catch (IOException e) {
-            LOG.error("Could not read input: " + e.getMessage());
+            LOG.error("Could not read input: {}", e.getMessage());
             throw new SimulatorException("Error with reading from file", e);
         }
         return Optional.ofNullable(commands);

@@ -19,7 +19,7 @@ public final class ToyRobotSimulator {
     private final InputHandler inputHandler;
     private final ToyRobot toyRobot;
 
-    public ToyRobotSimulator(InputHandler inputHandler, ToyRobot toyRobot) {
+    ToyRobotSimulator(InputHandler inputHandler, ToyRobot toyRobot) {
         this.inputHandler = inputHandler;
         this.toyRobot = toyRobot;
     }
@@ -30,7 +30,7 @@ public final class ToyRobotSimulator {
 
         //2. Execute commands
         List<Command> commandStream = commandList.orElse(Collections.emptyList());
-        commandStream.forEach(command -> command.perform());
+        commandStream.forEach(Command::perform);
     }
 
     public String getReportString() {

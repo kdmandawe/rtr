@@ -155,33 +155,18 @@ public class BasicToyRobotTest {
         toyRobot.doPlace(new Placement(0, 0, Direction.NORTH));
         toyRobot.doReport();
         //Check if report is logged
-        verify(mockAppender).doAppend(argThat(new ArgumentMatcher() {
-            @Override
-            public boolean matches(final Object argument) {
-                return ((LoggingEvent)argument).getFormattedMessage().contains("0,0,NORTH");
-            }
-        }));
+        verify(mockAppender).doAppend(argThat((ArgumentMatcher) argument -> ((LoggingEvent)argument).getFormattedMessage().contains("0,0,NORTH")));
 
         toyRobot.doMove();
         toyRobot.doReport();
         //Check if report is logged
-        verify(mockAppender).doAppend(argThat(new ArgumentMatcher() {
-            @Override
-            public boolean matches(final Object argument) {
-                return ((LoggingEvent)argument).getFormattedMessage().contains("0,1,NORTH");
-            }
-        }));
+        verify(mockAppender).doAppend(argThat((ArgumentMatcher) argument -> ((LoggingEvent)argument).getFormattedMessage().contains("0,1,NORTH")));
 
         toyRobot.doPlace(new Placement(2, 2, Direction.NORTH));
         toyRobot.doTurn(TurnDirection.LEFT);
         toyRobot.doReport();
         //Check if report is logged
-        verify(mockAppender).doAppend(argThat(new ArgumentMatcher() {
-            @Override
-            public boolean matches(final Object argument) {
-                return ((LoggingEvent)argument).getFormattedMessage().contains("2,2,WEST");
-            }
-        }));
+        verify(mockAppender).doAppend(argThat((ArgumentMatcher) argument -> ((LoggingEvent)argument).getFormattedMessage().contains("2,2,WEST")));
         // clean up
         root.detachAppender(mockAppender);
     }

@@ -73,14 +73,15 @@ So much of the story, the design is purely object-oriented. That's the story I'm
 implement the solution.
 
 #### Key Players (or Objects :)
-- ToyRobot - the shiny smart robot in the story above. This is the main player. He performs accordingly depending on what 
+- ToyRobot - the shiny smart robot in the story above. This is the main player. It performs accordingly depending on what 
 command is fed.
 - TableTop - the table in the story above. This is where the robot will perform its movements. The ToyRobot therefore has
-to be assigned with a TableTop
+to be assigned with a TableTop.
 - ToyRobotSimulator - this corresponds to the 'setup' on the story above. This will hold the key Objects above. First it
 receives the raw commands and then translate those into Command objects which the robot can understand for the 
-corresponding action
-- InputHandler - the ToyRobotSimulator will have this to understand input commands
+corresponding action.
+- InputHandler - the ToyRobotSimulator will have this to understand input commands.
+- ToyRobotPlayer - this is the robot-fanatic kid. This is the client that wants to 'play' the simulator.
 
 #### DESIGN PATTERNS
 
@@ -98,7 +99,7 @@ should invoke before finally arriving to `.build()` which will give the final in
 #### LOOSE COUPLING, OPEN-CLOSED PRINCIPLE
 
 - Can I add Commands easily?
-- Can I add something like AdvancedToyRobot that does a fancier stuff?
+- Can I add something like AdvancedToyRobot that does some fancier stuff?
 - Will I touch already released codes when I want to modify something or worse introduce bugs?
 - Will someone new to the team understand my code easily and doesn't have to call me to fix something?
 

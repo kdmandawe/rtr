@@ -1,6 +1,7 @@
 package com.rea.toyrobot.input;
 
 import com.rea.toyrobot.command.Command;
+import com.rea.toyrobot.common.exception.SimulatorException;
 import com.rea.toyrobot.robot.ToyRobot;
 import org.junit.Before;
 import org.junit.Test;
@@ -46,6 +47,20 @@ public class FileInputHandlerTest {
         Optional<List<Command>> commands = inputHandler.getCommands(new String[]{path}, toyRobot);
         assertFalse(commands.get().isEmpty());
         assertTrue(commands.get().size() == 2);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetCommandsNoArgsPassed() {
+        FileInputHandler inputHandler = new FileInputHandler();
+        Optional<List<Command>> commands = inputHandler.getCommands(new String[]{}, toyRobot);
+        assertFalse(commands.isPresent());
+    }
+
+    @Test(expected = SimulatorException.class)
+    public void testGetCommandsFromInvalidFileName() {
+        FileInputHandler inputHandler = new FileInputHandler();
+        Optional<List<Command>> commands = inputHandler.getCommands(new String[]{"nonexisting.txt"}, toyRobot);
+        assertTrue(commands.get().isEmpty());
     }
 
 }

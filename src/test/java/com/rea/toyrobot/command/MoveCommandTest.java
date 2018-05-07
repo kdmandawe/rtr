@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -22,6 +23,13 @@ public class MoveCommandTest {
         Command moveCommand = new MoveCommand(toyRobot);
         moveCommand.perform();
         verify(toyRobot, times(1)).doMove();
+    }
+
+    @Test
+    public void testMoveCommandToString() {
+        Command moveCommand = new MoveCommand(toyRobot);
+        assertTrue(moveCommand.toString() != null && moveCommand.toString().startsWith("MoveCommand{toyRobot=Mock " +
+                "for ToyRobot, hashCode:"));
     }
 
 }

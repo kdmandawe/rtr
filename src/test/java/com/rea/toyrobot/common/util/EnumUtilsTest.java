@@ -5,13 +5,13 @@ import org.junit.Test;
 
 import java.lang.reflect.InvocationTargetException;
 
-public class ConstantsTest extends BaseUnitTest {
+public class EnumUtilsTest extends BaseUnitTest {
 
     @Test
-    public void testConstantsClassWellDefined()
+    public void testEnumUtilsClassWellDefined()
             throws NoSuchMethodException, InvocationTargetException,
             InstantiationException, IllegalAccessException {
-        testUtilityClassWellDefined(Constants.class);
+        testUtilityClassWellDefined(EnumUtils.class);
     }
 
 }

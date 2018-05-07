@@ -6,7 +6,7 @@ import com.rea.toyrobot.common.util.PropertyProvider;
 /**
  * Factory class for creating {@link TableTop} instances.
  */
-public class TableTops {
+public final class TableTops {
 
     private TableTops () {
 

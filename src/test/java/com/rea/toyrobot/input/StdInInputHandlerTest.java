@@ -72,6 +72,36 @@ public class StdInInputHandlerTest {
         assertTrue(commands.get().size() == 2);
     }
 
+    @Test
+    public void testGetCommandsWithForcedQuit() {
+        //given
+        String data = "PLACE 0,0,NORTH\n" +
+                "HELLO\n" +
+                "\n" +
+                "REPORT\n" +
+                "WHY\n" +
+                "q!";
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+        //when
+        StdInInputHandler inputHandler = new StdInInputHandler();
+        Optional<List<Command>> commands = inputHandler.getCommands(new String[]{}, toyRobot);
+        //then
+        assertFalse(commands.get().isEmpty());
+        assertTrue(commands.get().size() == 2);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetCommandsWithArgsInvalid() {
+        //given
+        String data = "\r\n";
+        System.setIn(new ByteArrayInputStream(data.getBytes()));
+        //when
+        StdInInputHandler inputHandler = new StdInInputHandler();
+        Optional<List<Command>> commands = inputHandler.getCommands(new String[]{"input.txt"}, toyRobot);
+        //then
+        assertTrue(commands.get().isEmpty());
+    }
+
     @After
     public void tearDown() {
         System.setIn(stdin);

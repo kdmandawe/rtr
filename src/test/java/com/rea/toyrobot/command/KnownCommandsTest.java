@@ -1,11 +1,12 @@
 package com.rea.toyrobot.command;
 
+import com.rea.toyrobot.BaseUnitTest;
 import org.junit.Test;
 
 import static com.rea.toyrobot.command.KnownCommands.*;
 import static org.junit.Assert.assertEquals;
 
-public class KnownCommandsTest {
+public class KnownCommandsTest extends BaseUnitTest {
 
     @Test
     public void testCreatePlaceEnumFromString() {
@@ -36,5 +37,5 @@ public class KnownCommandsTest {
         KnownCommands result = KnownCommands.fromString("REPORT");
         assertEquals(REPORT, result);
     }
-
+    
 }

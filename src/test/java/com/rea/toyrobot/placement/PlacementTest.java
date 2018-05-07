@@ -39,4 +39,11 @@ public class PlacementTest {
         assertEquals(placement1, placement2);
     }
 
+    @Test
+    public void testHashCode () {
+        Placement placement1 = new Placement(0, 0, NORTH);
+        Placement placement2 = new Placement(0, 0, NORTH);
+        assertEquals(placement1.hashCode(), placement2.hashCode());
+    }
+
 }

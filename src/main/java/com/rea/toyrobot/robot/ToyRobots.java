@@ -5,7 +5,7 @@ import com.rea.toyrobot.tabletop.TableTop;
 /**
  * Factory class for creating ToyRobot instances
  */
-public class ToyRobots {
+public final class ToyRobots {
 
     private ToyRobots() {
         //should not be instantiated

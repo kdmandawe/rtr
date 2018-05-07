@@ -1,5 +1,6 @@
 package com.rea.toyrobot.input;
 
+import com.rea.toyrobot.BaseUnitTest;
 import com.rea.toyrobot.command.Command;
 import com.rea.toyrobot.robot.ToyRobot;
 import org.junit.After;
@@ -9,12 +10,13 @@ import org.mockito.Mockito;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Optional;
 
 import static org.junit.Assert.*;
 
-public class InputHandlersTest {
+public class InputHandlersTest extends BaseUnitTest {
 
     private ToyRobot toyRobot;
     private final InputStream stdin = System.in;
@@ -49,6 +51,13 @@ public class InputHandlersTest {
         Optional<List<Command>> commands = handler.getCommands(new String[]{}, toyRobot);
         assertTrue(commands.isPresent());
         assertEquals(3, commands.get().size());
+    }
+
+    @Test
+    public void testInputHandlersClassWellDefined()
+            throws NoSuchMethodException, InvocationTargetException,
+            InstantiationException, IllegalAccessException {
+        testUtilityClassWellDefined(InputHandlers.class);
     }
 
     @After

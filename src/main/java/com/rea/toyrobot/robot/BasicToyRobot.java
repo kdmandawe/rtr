@@ -123,13 +123,8 @@ public class BasicToyRobot implements ToyRobot {
                     newDirection = (direction == LEFT ? SOUTH : NORTH);
                     break;
             }
+            placement = new Placement(placement.getxPosition(), placement.getyPosition(), newDirection);
 
-            Placement newPlacement = new Placement(placement.getxPosition(), placement.getyPosition(), newDirection);
-            if (actionValid(newPlacement)) {
-                placement = newPlacement;
-            } else {
-                LOG.warn("Invalid {} Command. Ignoring..", direction);
-            }
         } else {
             LOG.warn("Toy Robot not in play yet. Ignoring {} Command..", direction);
         }

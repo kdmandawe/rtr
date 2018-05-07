@@ -3,7 +3,6 @@ package com.rea.toyrobot.common.util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -25,7 +24,7 @@ public class FilePropertyProvider implements PropertyProvider{
         props = new Properties();
         try(InputStream input = getClass().getClassLoader().getResourceAsStream(fileName)) {
             props.load(input);
-        } catch (IOException e) {
+        } catch (Exception e) {
             LOG.warn("Error loading properties from file name: {}", fileName);
         }
     }

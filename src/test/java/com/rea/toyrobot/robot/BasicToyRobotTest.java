@@ -110,6 +110,54 @@ public class BasicToyRobotTest {
     }
 
     @Test
+    public void testTurnLeftInitiallyFacingSouth() {
+        BasicToyRobot toyRobot = new BasicToyRobot(tableTop);
+        toyRobot.doPlace(new Placement(0, 0, Direction.SOUTH));
+        toyRobot.doTurn(TurnDirection.LEFT);
+        assertTrue(toyRobot.inPlay());
+        Placement currentPlacement = toyRobot.getPlacement();
+        assertEquals(0, currentPlacement.getxPosition());
+        assertEquals(0, currentPlacement.getyPosition());
+        assertEquals(Direction.EAST, currentPlacement.getDirection());
+    }
+
+    @Test
+    public void testTurnRightInitiallyFacingSouth() {
+        BasicToyRobot toyRobot = new BasicToyRobot(tableTop);
+        toyRobot.doPlace(new Placement(0, 0, Direction.SOUTH));
+        toyRobot.doTurn(TurnDirection.RIGHT);
+        assertTrue(toyRobot.inPlay());
+        Placement currentPlacement = toyRobot.getPlacement();
+        assertEquals(0, currentPlacement.getxPosition());
+        assertEquals(0, currentPlacement.getyPosition());
+        assertEquals(Direction.WEST, currentPlacement.getDirection());
+    }
+
+    @Test
+    public void testTurnLeftInitiallyFacingWest() {
+        BasicToyRobot toyRobot = new BasicToyRobot(tableTop);
+        toyRobot.doPlace(new Placement(0, 0, Direction.WEST));
+        toyRobot.doTurn(TurnDirection.LEFT);
+        assertTrue(toyRobot.inPlay());
+        Placement currentPlacement = toyRobot.getPlacement();
+        assertEquals(0, currentPlacement.getxPosition());
+        assertEquals(0, currentPlacement.getyPosition());
+        assertEquals(Direction.SOUTH, currentPlacement.getDirection());
+    }
+
+    @Test
+    public void testTurnRightInitiallyFacingWest() {
+        BasicToyRobot toyRobot = new BasicToyRobot(tableTop);
+        toyRobot.doPlace(new Placement(0, 0, Direction.WEST));
+        toyRobot.doTurn(TurnDirection.RIGHT);
+        assertTrue(toyRobot.inPlay());
+        Placement currentPlacement = toyRobot.getPlacement();
+        assertEquals(0, currentPlacement.getxPosition());
+        assertEquals(0, currentPlacement.getyPosition());
+        assertEquals(Direction.NORTH, currentPlacement.getDirection());
+    }
+
+    @Test
     public void testTurnLeftNotInplay() {
         BasicToyRobot toyRobot = new BasicToyRobot(tableTop);
         toyRobot.doTurn(TurnDirection.LEFT);
@@ -140,6 +188,18 @@ public class BasicToyRobotTest {
         assertEquals(2, currentPlacement.getxPosition());
         assertEquals(4, currentPlacement.getyPosition());
         assertEquals(Direction.NORTH, currentPlacement.getDirection());
+    }
+
+    @Test
+    public void testMoveFacingSouth() {
+        BasicToyRobot toyRobot = new BasicToyRobot(tableTop);
+        toyRobot.doPlace(new Placement(0, 4, Direction.SOUTH));
+        toyRobot.doMove();
+        assertTrue(toyRobot.inPlay());
+        Placement currentPlacement = toyRobot.getPlacement();
+        assertEquals(0, currentPlacement.getxPosition());
+        assertEquals(3, currentPlacement.getyPosition());
+        assertEquals(Direction.SOUTH, currentPlacement.getDirection());
     }
 
     @Test

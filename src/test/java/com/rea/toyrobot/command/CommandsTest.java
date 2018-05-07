@@ -1,15 +1,16 @@
 package com.rea.toyrobot.command;
 
+import com.rea.toyrobot.BaseUnitTest;
 import com.rea.toyrobot.robot.ToyRobot;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import java.lang.reflect.InvocationTargetException;
 
-public class CommandsTest {
+import static org.junit.Assert.*;
+
+public class CommandsTest extends BaseUnitTest {
 
     private ToyRobot toyRobot;
 
@@ -83,4 +84,8 @@ public class CommandsTest {
         assertNull(command);
     }
 
+    @Test
+    public void testFactoryWellDefined() throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        testUtilityClassWellDefined(Commands.class);
+    }
 }

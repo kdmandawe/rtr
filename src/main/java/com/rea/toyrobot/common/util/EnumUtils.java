@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 /**
  * Utility class for enums
  */
-public class EnumUtils {
+public final class EnumUtils {
 
     private EnumUtils(){}
 

@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -23,6 +24,12 @@ public class LeftCommandTest {
         Command leftCommand = new LeftCommand(toyRobot);
         leftCommand.perform();
         verify(toyRobot, times(1)).doTurn(TurnDirection.LEFT);
+    }
+
+    @Test
+    public void testLeftCommandToString() {
+        Command leftCommand = new LeftCommand(toyRobot);
+        assertTrue(leftCommand.toString() != null && leftCommand.toString().startsWith("LeftCommand{toyRobot=Mock for ToyRobot, hashCode:"));
     }
 
 }

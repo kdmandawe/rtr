@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -32,6 +33,13 @@ public class PlaceCommandTest {
     public void testCreateInstanceWithoutPlacementObject() {
         Command command = new PlaceCommand(0, 0, Direction.NORTH, toyRobot);
         assertNotNull(command);
+    }
+
+    @Test
+    public void testPlaceCommandToString() {
+        Command placeCommand = new PlaceCommand(0, 0, Direction.NORTH, toyRobot);
+        assertTrue(placeCommand.toString() != null && placeCommand.toString().startsWith
+                ("PlaceCommand{placement="));
     }
 
 }

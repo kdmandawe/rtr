@@ -1,12 +1,15 @@
 package com.rea.toyrobot.tabletop;
 
+import com.rea.toyrobot.BaseUnitTest;
 import com.rea.toyrobot.common.util.PropertyProvider;
 import com.rea.toyrobot.common.util.PropertyProviders;
 import org.junit.Test;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static org.junit.Assert.*;
 
-public class TableTopsTest {
+public class TableTopsTest extends BaseUnitTest {
 
     @Test
     public void testCreateSquareTableTopNoFall() {
@@ -32,6 +35,13 @@ public class TableTopsTest {
         assertEquals(4, tableTop.getMaxYPosition());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testCreateSquareTableTopAllowFallFromPropertiesBlankEntries() {
+        PropertyProvider propertyProvider = PropertyProviders.newFilePropertyProvider("application-blank.properties");
+        TableTop tableTop = TableTops.newSquareTableTopAllowFall(propertyProvider);
+        assertNull(tableTop);
+    }
+
     @Test
     public void testCreateSquareTableTopNoFallFromProperties() {
         PropertyProvider propertyProvider = PropertyProviders.newFilePropertyProvider("application-test.properties");
@@ -43,9 +53,23 @@ public class TableTopsTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
+    public void testCreateSquareTableTopNoFallFromPropertiesBlankEntries() {
+        PropertyProvider propertyProvider = PropertyProviders.newFilePropertyProvider("application-blank.properties");
+        TableTop tableTop = TableTops.newSquareTableTopDontAllowFall(propertyProvider);
+        assertNull(tableTop);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
     public void testCreateSquareTableTopAllowFallUnequalWidthHeight() {
         TableTop tableTop = TableTops.newSquareTableTopAllowFall(6, 5);
         assertNotNull(tableTop);
         assertTrue(tableTop.allowFall());
+    }
+
+    @Test
+    public void testTableTopsClassWellDefined()
+            throws NoSuchMethodException, InvocationTargetException,
+            InstantiationException, IllegalAccessException {
+        testUtilityClassWellDefined(TableTops.class);
     }
 }

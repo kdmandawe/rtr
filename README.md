@@ -62,10 +62,10 @@ mvn clean verify -P ci
 ## Solution and Design Considerations
 
 ### Real World Objects
-Uri, my two-year old boy walks by the toy section of a department store. A **robot-fanatic** as he is, he suddenly 
+*Uri, my two-year old boy walks by the toy section of a department store. A **robot-fanatic** as he is, he suddenly 
 stopped by a **setup** of a **table** and a shiny **robot** wondering what it does. A salesman immediately turned on the
 the **setup** and gave commands like 'PLACE 0,0,NORTH', 'MOVE', 'LEFT', 'RIGHT', 'REPORT'. Awesome! it's like a 
-'your-wish-is-my-command' experience! The robot moves and reported the correct **placement**!
+'your-wish-is-my-command' experience! The robot moved and reported the correct **placement**!*
 
 ### OOP Goodness
 
@@ -99,11 +99,12 @@ should invoke before finally arriving to `.build()` which will give the final in
 #### LOOSE COUPLING, OPEN-CLOSED PRINCIPLE
 
 - Can I add Commands easily?
-- Can I add something like AdvancedToyRobot that does some fancier stuff?
-- Will I touch already released codes when I want to modify something or worse introduce bugs?
-- Will someone new to the team understand my code easily and doesn't have to call me to fix something?
+- Can I add something like AdvancedToyRobot that does some fancier stuff than the BasicToyRobot?
+- Will I touch already released codes when I want to modify something or worse will I introduce bugs?
+- Will someone new to the team understand my code easily and doesn't have to call me to fix something or do an extensive
+walkthrough?
 
-The above are top considerations on design of this solution. To promote loose coupling, you'll be seeing heavy use of 
+The above are top considerations on the design of this solution. To promote loose coupling, you'll be seeing heavy use of 
 interfaces and as mentioned above, design patterns.
 
 ## Author
